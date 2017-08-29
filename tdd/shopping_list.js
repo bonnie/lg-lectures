@@ -14,6 +14,7 @@
 const command = process.argv[2]
 const store = process.argv[3]
 const item = process.argv.slice(4).join(' ')
+const LISTFILE = './list.json'
 
 switch (command) {
   case 'list':
@@ -24,10 +25,14 @@ switch (command) {
     break;
   default:
     console.error(`USAGE:
-      *    shopping_list.js <command> <args>
-      *  where command/args combos can be:
-      *    list
-      *    list <store>
-      *    add <store> <item>
-      *    delete <store> <item>`)
+          shopping_list.js <command> <args>
+        where command/args combos can be:
+          list
+          list <store>
+          add <store> <item>
+          delete <store> <item>`)
+}
+
+module.exports = {
+  LISTFILE,
 }

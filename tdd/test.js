@@ -1,6 +1,9 @@
 // tests for shopping list CLI app
+const fs = require('fs')
+const { expect, assert } = require('chai')
 const { exec } = require('child_process')
-const expect = require('chai').expect
+const { getShoppingList } = require('./commands.js')
+const { LISTFILE } = require('./shopping_list.js')
 
 describe('CLI interface', () => {
   it('returns an error when no command is specified', (done) => {
@@ -14,5 +17,15 @@ describe('CLI interface', () => {
       expect(stderr).to.include('USAGE')
       done()
     })
+  })
+})
+
+describe('reading/writing LISTFILE', () => {
+  beforeEach(() => {
+    fs.unlinkSync(LISTFILE)
+  })
+  it('creates json storage file if it doesn\'t exist', () => {
+    getShoppingList()
+    assert(fs.existsSync(LISTFILE))
   })
 })
