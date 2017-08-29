@@ -22,7 +22,7 @@ describe('CLI interface', () => {
 
 describe('reading/writing LISTFILE', () => {
   beforeEach(() => {
-    fs.unlinkSync(LISTFILE)
+    if (fs.existsSync(LISTFILE)) fs.unlinkSync(LISTFILE)
   })
   it('creates json storage file if it doesn\'t exist', () => {
     getShoppingList()
