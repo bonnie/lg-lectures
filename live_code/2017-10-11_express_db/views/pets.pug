@@ -1,0 +1,13 @@
+html
+  head
+    title Pets
+  body
+    h1 Pets
+    table
+      tr
+        th Pet name
+        th Pet species
+      each pet in pets
+        tr
+          td= pet.name
+          td= pet.species
