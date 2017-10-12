@@ -1,7 +1,10 @@
 const pgp = require('pg-promise')()
 
 // const connection = { host: 'localhost', port: 5432, db: 'pets' }
-const db = pgp('postgres:///pets')
+const connection = process.env.NODE_ENV === 'test'
+  ? 'postgres:///pets_test'
+  : 'postgres:///pets'
+const db = pgp(connection)
 
 /**
  * Gets pets and species from db
@@ -17,5 +20,6 @@ const getPetsAndSpecies = () => {
 }
 
 module.exports = {
+  db,
   getPetsAndSpecies,
 }

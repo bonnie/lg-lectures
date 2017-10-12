@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon app.js",
     "db:create": "createdb pets && psql pets < db/tables.sql",
-    "db:seed": "psql pets < db/seed.sql"
+    "db:seed": "psql pets < db/seed.sql",
+    "test": "export NODE_ENV='test' && mocha"
   },
   "keywords": [],
   "author": "",
